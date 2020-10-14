@@ -1,0 +1,116 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.timer {
+  width: 400px;
+  height: 400px;
+  border: 4px solid red;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.timer__wrapper {
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.timer__content {
+  height: 100%;
+  -webkit-transform: translate(0px, 50%);
+          transform: translate(0px, 50%);
+  -webkit-transition: -webkit-transform .02s;
+  transition: -webkit-transform .02s;
+  transition: transform .02s;
+  transition: transform .02s, -webkit-transform .02s;
+  position: relative;
+  border-top: 1px solid aquamarine;
+}
+
+.timer__wave {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 120%;
+  position: absolute;
+  top: 0;
+  -webkit-animation: wave 2s infinite ease-in-out;
+          animation: wave 2s infinite ease-in-out;
+  z-index: 1;
+  -webkit-transform: translate(0px, -100%);
+          transform: translate(0px, -100%);
+}
+
+.timer__wave svg {
+  -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  fill: aquamarine;
+}
+
+.timer__wave--bg {
+  z-index: 0;
+  -webkit-animation-delay: .8s;
+          animation-delay: .8s;
+}
+
+.timer__wave--bg svg {
+  fill: aqua;
+}
+
+.timer__body {
+  background-color: aquamarine;
+  height: 100%;
+}
+
+@-webkit-keyframes wave {
+  0% {
+    -webkit-transform: translate(0%, -100%);
+            transform: translate(0%, -100%);
+  }
+  50% {
+    -webkit-transform: translate(-16.66%, -100%);
+            transform: translate(-16.66%, -100%);
+  }
+  100% {
+    -webkit-transform: translate(0%, -100%);
+            transform: translate(0%, -100%);
+  }
+}
+
+@keyframes wave {
+  0% {
+    -webkit-transform: translate(0%, -100%);
+            transform: translate(0%, -100%);
+  }
+  50% {
+    -webkit-transform: translate(-16.66%, -100%);
+            transform: translate(-16.66%, -100%);
+  }
+  100% {
+    -webkit-transform: translate(0%, -100%);
+            transform: translate(0%, -100%);
+  }
+}
+/*# sourceMappingURL=main.css.map */
