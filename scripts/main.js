@@ -16,3 +16,73 @@ const createWaves = (length, parent) => {
 
 createWaves(6, timerWave);
 createWaves(8, timerWaveBg);
+
+
+const timerContent = document.querySelector('.timer__content');
+const timerRemaining = document.querySelector('.timer__remaining');
+
+const setTimer = (time) => {
+
+  const initialTime = Date.now();
+
+  const interval = 100;
+  timerContent.style.transition = `transform ${interval}ms`;
+
+  const intervalId = setInterval(() => {
+
+    const currentTime = Date.now();
+    const elapsedTime = currentTime - initialTime;
+    const percent = (elapsedTime / time) * 100;
+
+    const remainingTime = time - elapsedTime;
+    timerRemaining.innerHTML = millisToMinutesAndSeconds(remainingTime);
+
+    timerContent.style.transform = `translate(0%, ${percent}%)`;
+
+    if(elapsedTime > time) {
+      clearInterval(intervalId);
+    }
+
+  }, interval);
+}
+
+function millisToMinutesAndSeconds(millis) {
+  if(millis < 0) millis = 0;
+  var minutes = Math.floor(millis / 60000);
+  var seconds = ((millis % 60000) / 1000).toFixed(0);
+  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+}
+
+
+
+const tHandleArray = document.querySelectorAll('.thandle');
+tHandleArray.forEach((tHandle) => {
+  const arrowUp = tHandle.querySelector('.thandle__arrow--up');
+  const arrowDown = tHandle.querySelector('.thandle__arrow--down');
+  const number = tHandle.querySelector('.thandle__number');
+
+  arrowUp.addEventListener('click', () => {
+    let value = parseInt(number.innerText);
+    value++;
+    if(value > 60) return;
+    number.innerText = (value < 10 ? '0' : '') + value;
+  });
+
+  arrowDown.addEventListener('click', () => {
+    let value = parseInt(number.innerText);
+    value--;
+    if(value < 0) return;
+    number.innerText = (value < 10 ? '0' : '') + value;
+  });
+});
+
+
+const controlsBtn = document.querySelector('.controls__start');
+controlsBtn.addEventListener('click', () => {
+
+  const min = tHandleArray[0].querySelector('.thandle__number').innerText;
+  const sec = tHandleArray[1].querySelector('.thandle__number').innerText;
+  const millis = parseInt(min) * 60000 + parseInt(sec) * 1000;
+
+  setTimer(millis);
+});

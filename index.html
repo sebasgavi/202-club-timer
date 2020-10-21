@@ -9,15 +9,31 @@
 <body>
   
   <main class="timer">
-
     <div class="timer__wrapper">
       <div class="timer__content">
         <section class="timer__wave"></section>
         <section class="timer__wave timer__wave--bg"></section>
         <section class="timer__body"></section>
       </div>
+      <h2 class="timer__remaining"></h2>
     </div>
   </main>
+
+  <section class="controls">
+    <div class="thandle">
+      <div class="thandle__arrow thandle__arrow--up"></div>
+      <p class="thandle__number">00</p>
+      <div class="thandle__arrow thandle__arrow--down"></div>
+    </div>
+    <p class="controls__label">min</p>
+    <div class="thandle">
+      <div class="thandle__arrow thandle__arrow--up"></div>
+      <p class="thandle__number">00</p>
+      <div class="thandle__arrow thandle__arrow--down"></div>
+    </div>
+    <p class="controls__label">seg</p>
+    <button class="controls__start">empezar</button>
+  </section>
 
   <script src="./scripts/main.js"></script>
 </body>
